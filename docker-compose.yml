@@ -1,0 +1,18 @@
+version: '3'
+services:
+  ffmpeg:
+    image: marochat/ffmpeg:test
+    container_name: ffmpegprog
+    volumes:
+      - testvol:/testvol
+      - localvol:/localvol
+      - .:/tmp
+
+# 外部ボリューム利用するサンプル
+volumes:
+  testvol:
+    name: test_vol
+    external: true
+  localvol:
+    name: ffmpeg_vol
+    external: false

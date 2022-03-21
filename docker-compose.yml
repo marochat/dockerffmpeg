@@ -1,7 +1,8 @@
 version: '3'
 services:
   ffmpeg:
-    image: marochat/ffmpeg:test
+    build: .
+    image: ffmpeg:local
     container_name: ffmpegprog
     volumes:
       - testvol:/testvol

@@ -57,9 +57,8 @@ RUN set -eux ; \
     make install; \
     ldconfig; \
     cd /tmp; \
-        wget -O ffmpeg-5.0.tar.bz2 https://ffmpeg.org/releases/ffmpeg-5.0.tar.bz2; \
-        tar xjvf ffmpeg-5.0.tar.bz2; \
-        cd ffmpeg-5.0; \
+        git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg; \
+        cd ffmpeg; \
         ./configure \
         --pkg-config-flags="--static" \
         --disable-ffplay \
@@ -102,4 +101,5 @@ RUN pip install -U pip; \
     pip install -U setuptools wheel; \
     pip install numpy Pillow lxml piexif ffmpeg-python structlog
 
-CMD ["bash"]
+WORKDIR /tmp
+CMD ["/bin/bash"]
